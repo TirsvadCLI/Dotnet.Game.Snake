@@ -2,26 +2,39 @@
 {
     public class SnakeGame
     {
-        public const int gameWindowWidth = Constants.windowWidth - 2;
-        public const int gameWindowHight = Constants.windowHeight - 2;
-        private bool isGameOver = false;
-        private static readonly Position Origin = new Position((gameWindowHight / 2), (SnakeGame.gameWindowWidth / 2));
-        private Direction _currentDirection;
-        private Direction _nextDirection;
-        private Snake _snake;
-        private Food _food;
+        // Constants
+        public const int gameWindowWidth = Constants.windowWidth - 2; // Width of the game
+        public const int gameWindowHight = Constants.windowHeight - 2; // Height of the game
+        // Variables
+        private bool isGameOver = false; // Check if the game is over
+        private static readonly Position Origin = new Position((gameWindowHight / 2), (SnakeGame.gameWindowWidth / 2)); // Origin position of the snake
+        private Direction _currentDirection; // Current direction of the snake
+        private Direction _nextDirection; // Next direction of the snake
+        private Snake Snake; // Snake object
+        private Food Food; // Food object
+        private ScoreBoard ScoreBoard = ScoreBoard.Instance; // ScoreBoard object
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SnakeGame"/> class.
+        /// </summary>
         public SnakeGame()
         {
-            _snake = new Snake(Origin, initialSize: 5);
-            _food = new Food();
-            _food.AddFood();
+            Snake = new Snake(Origin, initialSize: 5);
+            Food = new Food();
+            Food.AddFood();
             _currentDirection = Direction.Right;
             _nextDirection = Direction.Right;
         }
 
-        public bool GameOver => _snake.Dead;
+        /// <summary>
+        /// Gets a value indicating whether the game is over.
+        /// </summary>
+        public bool GameOver => Snake.Dead;
 
+        /// <summary>
+        /// Handles key press events to change the direction of the snake.
+        /// </summary>
+        /// <param name="key">The key that was pressed.</param>
         public void OnKeyPress(ConsoleKey key)
         {
             Direction newDirection;
@@ -56,29 +69,41 @@
             _nextDirection = newDirection;
         }
 
+        /// <summary>
+        /// Updates the game state on each tick.
+        /// </summary>
         public void OnGameTick()
         {
             if (GameOver) throw new InvalidOperationException();
 
             _currentDirection = _nextDirection;
-            _snake.Move(_currentDirection);
+            Snake.Move(_currentDirection);
 
             // If the snake's head moves to the same position as an apple, the snake
             // eats it.
-            if (_snake.Head.Equals(_food.Position))
+            if (Snake.Head.Equals(Food.Position) && Food.foodType != null)
             {
-                _snake.Grow();
-                _food.AddFood();
+                ScoreBoard.IncreaseScore(Food.foodType.foodPoint);
+                Snake.Grow();
+                Food.AddFood();
             }
         }
 
+        /// <summary>
+        /// Renders the game state to the console.
+        /// </summary>
         public void Render()
         {
-            _snake.Render();
-            _food.foodType?.Render();
+            Snake.Render();
+            Food.foodType?.Render();
             Console.SetCursorPosition(0, 0);
         }
 
+        /// <summary>
+        /// Gets the opposite direction to the specified direction.
+        /// </summary>
+        /// <param name="direction">The direction.</param>
+        /// <returns>The opposite direction.</returns>
         private static Direction OppositeDirectionTo(Direction direction)
         {
             switch (direction)
@@ -91,8 +116,9 @@
             }
         }
 
-        // Border lines methods for the game window
-
+        /// <summary>
+        /// Draws the border lines for the game window.
+        /// </summary>
         public void BorderLine()
         {
             Console.BackgroundColor = ConsoleColor.Blue; // Set the background color of the border
@@ -121,6 +147,11 @@
             Console.WriteLine("Press ESC to exit the game");
         }
 
+        /// <summary>
+        /// Draws a vertical border line at the specified position.
+        /// </summary>
+        /// <param name="x">The x-coordinate.</param>
+        /// <param name="y">The y-coordinate.</param>
         private static void BorderLineVertical(int x, int y)
         {
             Console.SetCursorPosition(x, y);
@@ -128,6 +159,11 @@
             Console.Write("║");
         }
 
+        /// <summary>
+        /// Draws a horizontal border line at the specified position.
+        /// </summary>
+        /// <param name="x">The x-coordinate.</param>
+        /// <param name="y">The y-coordinate.</param>
         private static void BorderLineHorizontal(int x, int y)
         {
             Console.SetCursorPosition(x, y);
@@ -135,6 +171,11 @@
             Console.Write("═");
         }
 
+        /// <summary>
+        /// Draws the top-left corner of the border line at the specified position.
+        /// </summary>
+        /// <param name="x">The x-coordinate.</param>
+        /// <param name="y">The y-coordinate.</param>
         private static void BorderLineCornerTopLeft(int x, int y)
         {
             Console.SetCursorPosition(x, y);
@@ -142,6 +183,11 @@
             Console.Write("╔");
         }
 
+        /// <summary>
+        /// Draws the top-right corner of the border line at the specified position.
+        /// </summary>
+        /// <param name="x">The x-coordinate.</param>
+        /// <param name="y">The y-coordinate.</param>
         private static void BorderLineCornerTopRight(int x, int y)
         {
             Console.SetCursorPosition(x, y);
@@ -149,6 +195,11 @@
             Console.Write("╗");
         }
 
+        /// <summary>
+        /// Draws the bottom-left corner of the border line at the specified position.
+        /// </summary>
+        /// <param name="x">The x-coordinate.</param>
+        /// <param name="y">The y-coordinate.</param>
         public static void BorderLineCornerBottomLeft(int x, int y)
         {
             Console.SetCursorPosition(x, y);
@@ -156,20 +207,39 @@
             Console.Write("╚");
         }
 
+        /// <summary>
+        /// Draws the bottom-right corner of the border line at the specified position.
+        /// </summary>
+        /// <param name="x">The x-coordinate.</param>
+        /// <param name="y">The y-coordinate.</param>
         public static void BorderLineCornerBottomRight(int x, int y)
         {
             Console.SetCursorPosition(x, y);
             //Console.Write("■");
             Console.Write("╝");
         }
-
     }
+
+    /// <summary>
+    /// Represents a position in the game window.
+    /// </summary>
     public readonly struct Position(int top, int left)
     {
         public int Top { get; } = top;
         public int Left { get; } = left;
 
+        /// <summary>
+        /// Gets a new position that is to the right of the current position by the specified number of units.
+        /// </summary>
+        /// <param name="n">The number of units to the right.</param>
+        /// <returns>The new position.</returns>
         public Position RightBy(int n) => new Position(Top, Left + n);
+
+        /// <summary>
+        /// Gets a new position that is below the current position by the specified number of units.
+        /// </summary>
+        /// <param name="n">The number of units down.</param>
+        /// <returns>The new position.</returns>
         public Position DownBy(int n) => new Position(Top + n, Left);
     }
 }

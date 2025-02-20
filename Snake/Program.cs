@@ -9,6 +9,7 @@
         {
             var tickRate = TimeSpan.FromMilliseconds(100); // 100ms per tick = 10 ticks per second
             var snakeGame = new SnakeGame(); // Create a new game instance
+            var scoreBoard = ScoreBoard.Instance; // Get the score board instance
 
             Console.CursorVisible = false; // Hide the cursor
             Console.Clear(); // Clear the console
@@ -39,6 +40,7 @@
                 {
                     snakeGame.OnGameTick();
                     snakeGame.Render();
+                    scoreBoard.Render();
                     await Task.Delay(tickRate);
                 } while (!snakeGame.GameOver);
 
