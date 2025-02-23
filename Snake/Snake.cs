@@ -1,4 +1,6 @@
-﻿namespace Snake
+﻿using Snake.Model;
+
+namespace Snake
 {
     public class Snake
     {
