@@ -13,12 +13,13 @@ namespace Snake
             Console.CursorVisible = false; // Hide the cursor
             Console.Clear(); // Clear the console
 
-
             TimeSpan tickRate = TimeSpan.FromMilliseconds(100); // 100ms per tick = 10 ticks per second
             SnakeGame snakeGame = new SnakeGame(); // Create a new game instance
             ScoreBoard scoreBoard = ScoreBoard.Instance; // Get the score board instance
             HighScoreCollectionHelper highScoreCollectionHelper = new HighScoreCollectionHelper();
 
+            // In C#, the CancellationTokenSource is a class used to send cancellation signals to one or more tasks or operations.
+            // It is part of the Task Parallel Library (TPL) and is commonly used in asynchronous programming to gracefully cancel operations when they are no longer needed.
             using (CancellationTokenSource cts = new CancellationTokenSource()) // Create a cancellation token source
             {
                 /// <summary>
@@ -42,7 +43,10 @@ namespace Snake
                 // Main game loop
                 do
                 {
-                    snakeGame.OnGameTick();
+                    if (snakeGame.OnGameTick())
+                    {
+                        // TODO level up = increase speed
+                    }
                     snakeGame.Render();
                     scoreBoard.Render();
                     await Task.Delay(tickRate); // Game speed = tick rate
