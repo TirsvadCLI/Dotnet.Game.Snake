@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['instance_0',['Instance',['../class_snake_1_1_score_board.html#aca338ba3660d2745982ba079c643b46d',1,'Snake::ScoreBoard']]]
+  ['head_0',['Head',['../class_snake_1_1_snake.html#a92986afc5af8cd9d2dd52b4abd9e00d3',1,'Snake::Snake']]]
 ];

@@ -16,8 +16,14 @@
     <br />
     <br />
     <!-- PROJECT SCREENSHOTS -->
+    <a href="https://github.com/TirsvadCLI/CSharp.Game.Snake/blob/master/images/Screenshot_menu.png">
+        <img src="images/Screenshot_menu.png" alt="The game" height="120">
+    </a>
     <a href="https://github.com/TirsvadCLI/CSharp.Game.Snake/blob/master/images/Screenshot_snakeGame.png">
         <img src="images/Screenshot_snakeGame.png" alt="The game" height="120">
+    </a>
+    <a href="https://github.com/TirsvadCLI/CSharp.Game.Snake/blob/master/images/Screenshot_highscore.png">
+        <img src="images/Screenshot_highscore.png" alt="The game" height="120">
     </a>
     <br />
     <a href="https://github.com/TirsvadCLI/CSharp.Game.Snake"><strong>Explore the docs »</strong></a>
@@ -28,7 +34,6 @@
     <a href="https://github.com/TirsvadCLI/CSharp.Game.Snake/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
     </p>
 </div>
-
 
 # Snake Game
 This is a simple snake game for windows console and linux console. It's written in C# and uses .NET 9
@@ -103,13 +108,15 @@ This is an example of how to list things you need to use the software and how to
 ## Roadmap
 - [ ] Add more food types
 - [ ] Add bad food which reduce score (time limited witch it change food type)
-- [ ] Create Frame for HighScore Board
-- [ ] Craete Frame for input name for new HighScore
 - [ ] Speed up game when snake eat food
 
 ## Change Log
 
-23-02-2025
+Version 1.1.0
+- Add Frame for HighScore Board
+- Add Frame for input name for new HighScore
+- Add menu for new game, highscore and exit
+Version 1.0.0
 - Add game over Board
 - Add highScore Board
 
@@ -137,4 +144,3 @@ CSharp.Game.Snake/          # Root folder that contains the solution
 [license-url]: https://github.com/TirsvadCLI/CSharp.Game.Snake/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/jens-tirsvad-nielsen-13b795b9/
-

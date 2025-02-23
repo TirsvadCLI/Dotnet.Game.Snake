@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['gameover_0',['GameOver',['../class_snake_1_1_snake_game.html#a749bc560a9f8014ef75e6351f7687594',1,'Snake::SnakeGame']]]
+  ['foodpoint_0',['foodPoint',['../class_snake_1_1_food_type.html#a1ac7c824dacf7a54173add2a14a49382',1,'Snake::FoodType']]]
 ];

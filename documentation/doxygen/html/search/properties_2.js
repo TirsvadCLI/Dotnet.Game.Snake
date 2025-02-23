@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['head_0',['Head',['../class_snake_1_1_snake.html#a92986afc5af8cd9d2dd52b4abd9e00d3',1,'Snake::Snake']]]
+  ['gameover_0',['GameOver',['../class_snake_1_1_snake_game.html#a749bc560a9f8014ef75e6351f7687594',1,'Snake::SnakeGame']]]
 ];
