@@ -54,7 +54,7 @@ Food gives points.
 - Food 🍌 gives 11 points.
 - Food 🍒 gives 12 points.
 
-Food is placed randomly on the board.
+Food is placed randomly on the board. Food size is more than one field so you have to cath the left side of the food to eat it.
 
 The snake can move up, down, left and right.
 
@@ -102,14 +102,16 @@ This is an example of how to list things you need to use the software and how to
  
 ## Roadmap
 - [ ] Add more food types
+- [ ] Add bad food which reduce score (time limited witch it change food type)
 - [ ] Create Frame for HighScore Board
 - [ ] Craete Frame for input name for new HighScore
+- [ ] Speed up game when snake eat food
 
 ## Change Log
 
 23-02-2025
 - Add game over Board
-- Add HighScore Board
+- Add highScore Board
 
 ## Folder Structure
 

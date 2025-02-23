@@ -80,9 +80,15 @@ namespace Snake
         /// <summary>
         /// Updates the game state on each tick.
         /// </summary>
-        public void OnGameTick()
+        public bool OnGameTick()
         {
+            bool levelUp = false;
+
             if (GameOver) throw new InvalidOperationException();
+
+            // TEST TODO: Remove this line
+            Console.SetCursorPosition(0, 27);
+            Console.WriteLine("Snake position: " + Snake.Head.Left + "." + Snake.Head.Top);
 
             _currentDirection = _nextDirection;
             Snake.Move(_currentDirection);
@@ -94,7 +100,9 @@ namespace Snake
                 ScoreBoard.IncreaseScore(Food.foodType.foodPoint);
                 Snake.Grow();
                 Food.AddFood();
+                levelUp = true;
             }
+            return levelUp;
         }
 
         /// <summary>
