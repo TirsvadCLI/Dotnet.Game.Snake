@@ -8,8 +8,8 @@ namespace Snake
     public class SnakeGame
     {
         // Constants
-        public const int gameWindowWidth = Constants.gameWindowSizeWidth - 2; // Width of the game
-        public const int gameWindowHight = Constants.gameWindowSizeHeight - 2; // Height of the game
+        public const int gameWindowWidth = Constants.gameWindowSizeWidth - 2; //!< Width of the game
+        public const int gameWindowHight = Constants.gameWindowSizeHeight - 2; //!< Height of the game
         // Variables
         private bool isGameOver = false; // Check if the game is over
         private static readonly Position Origin = new Position((gameWindowHight / 2), (SnakeGame.gameWindowWidth / 2)); // Origin position of the snake
@@ -48,7 +48,7 @@ namespace Snake
         /// <param name="key">The key that was pressed.</param>
         public void OnKeyPress(ConsoleKey key)
         {
-            Direction newDirection;
+            Direction newDirection; //!< The new direction of the snake
 
             switch (key)
             {
@@ -85,7 +85,7 @@ namespace Snake
         /// </summary>
         public bool OnGameTick()
         {
-            bool levelUp = false;
+            bool levelUp = false; //!< Check if the snake level up
 
             if (GameOver) throw new InvalidOperationException();
 
@@ -135,23 +135,23 @@ namespace Snake
     /// <summary>
     /// Represents a position in the game window.
     /// </summary>
+    /// <param name="left">The left position.</param>
+    /// <param name="top">The top position.</param>
     public readonly struct Position(int top, int left)
     {
-        public int Top { get; } = top;
-        public int Left { get; } = left;
+        public int Top { get; } = top; //!< The top position
+        public int Left { get; } = left; //!< The left position
 
         /// <summary>
-        /// Gets a new position that is to the right of the current position by the specified number of units.
+        /// Returns a new position that is moved up by the specified amount.
         /// </summary>
-        /// <param name="n">The number of units to the right.</param>
-        /// <returns>The new position.</returns>
+        /// <returns>The new position</returns>
         public Position RightBy(int n) => new Position(Top, Left + n);
 
         /// <summary>
-        /// Gets a new position that is below the current position by the specified number of units.
+        /// Returns a new position that is moved up by the specified amount.
         /// </summary>
-        /// <param name="n">The number of units down.</param>
-        /// <returns>The new position.</returns>
+        /// <returns>The new position</returns>
         public Position DownBy(int n) => new Position(Top + n, Left);
     }
 }
