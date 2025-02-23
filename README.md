@@ -98,14 +98,18 @@ This is an example of how to list things you need to use the software and how to
 - [x] Windows console support
 - [x] Linux console support
 - [x] Score system
-
+- [x] Save and load highscore
+ 
 ## Roadmap
-- [ ] Save and load highscore
+- [ ] Add more food types
+- [ ] Create Frame for HighScore Board
+- [ ] Craete Frame for input name for new HighScore
 
 ## Change Log
 
 23-02-2025
-- Add game over screen
+- Add game over Board
+- Add HighScore Board
 
 ## Folder Structure
 
