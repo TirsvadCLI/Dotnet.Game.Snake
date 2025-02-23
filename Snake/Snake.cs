@@ -2,6 +2,9 @@
 
 namespace Snake
 {
+    /// <summary>
+    /// Represents a snake in the game.
+    /// </summary>
     public class Snake
     {
         private List<Position> _body; // The snake's body
@@ -123,7 +126,7 @@ namespace Snake
         private static bool PositionIsValid(Position position) =>
             position.Top > 0 &&
             position.Left > 0 &&
-            position.Left < Constants.windowWidth - 1 &&
-            position.Top < Constants.windowHeight - 2;
+            position.Left < Constants.gameWindowSizeWidth - 1 &&
+            position.Top < Constants.gameWindowSizeHeight - 1;
     }
 }

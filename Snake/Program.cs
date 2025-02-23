@@ -2,6 +2,9 @@
 
 namespace Snake
 {
+    /// <summary>
+    /// The main entry point for the application.
+    /// </summary>
     internal class Program
     {
         /// <summary>
@@ -57,8 +60,23 @@ namespace Snake
             }
 
             // Game over screen
-            Frame GameOverFrame = new Frame(Constants.windowWidth, Constants.windowHeight);
-            GameOverFrame.CenterRender(15, 4);
+            Frame GameOverFrame = new Frame(Constants.gameWindowSizeWidth, Constants.gameWindowSizeHeight);
+            {
+                int centerFrameWidth = 15;
+                int centerFrameHeight = 3;
+                GameOverFrame.CenterRender(centerFrameWidth, centerFrameHeight);
+
+                char[] gameOver = "Game Over".ToCharArray();
+                int startX = (Constants.gameWindowSizeWidth - gameOver.Length) / 2;
+                int startY = (Constants.gameWindowSizeHeight - centerFrameHeight) / 2;
+
+                Console.SetCursorPosition(startX, startY + 1);
+                foreach (char c in gameOver)
+                {
+                    Console.Write(c);
+                    System.Threading.Thread.Sleep(100);
+                }
+            }
 
             await Task.Delay(1000);
 
@@ -67,10 +85,23 @@ namespace Snake
             // Check if the score is a new high score
             if (highScoreCollectionHelper.IsNewHighScore(scoreBoard.Score))
             {
-                Console.Clear();
-                Console.WriteLine("New High Score!");
+                int centerFrameWidth = 30;
+                int centerFrameHeight = 5;
+
+                Frame AddNewHighscoreFrame = new Frame(Constants.gameWindowSizeWidth, Constants.gameWindowSizeHeight);
+                AddNewHighscoreFrame.CenterRender(centerFrameWidth, centerFrameHeight);
+                char[] highScoreText = "New High Score!".ToCharArray();
+
+                int startX = (Constants.gameWindowSizeWidth - centerFrameWidth) / 2 + 2;
+                int startY = (Constants.gameWindowSizeHeight - centerFrameHeight) / 2 + 1;
+                Console.CursorVisible = true;
+                Console.SetCursorPosition(startX, startY);
+                Console.Write("New High Score!");
+                Console.SetCursorPosition(startX, startY + 1);
                 Console.Write("Enter your name: ");
+                Console.SetCursorPosition(startX, startY + 2);
                 string name = Console.ReadLine();
+                Console.CursorVisible = false;
                 HighScore highScore = new HighScoreHelper(name, scoreBoard.Score);
                 highScoreCollectionHelper.AddHighScore(highScore);
             }

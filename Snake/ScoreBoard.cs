@@ -35,8 +35,11 @@
         /// </summary>
         public void Render()
         {
-            Console.SetCursorPosition(15, 0);
-            Console.Write("Score: " + _score);
+            string scoreText = "Score: " + _score;
+            // Find x position to center the score text
+            int startX = (Constants.gameWindowSizeWidth - scoreText.Length) / 2;
+            Console.SetCursorPosition(startX, 0);
+            Console.Write(scoreText);
         }
 
         /// <summary>
