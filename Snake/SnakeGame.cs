@@ -1,4 +1,6 @@
-﻿namespace Snake
+﻿using Snake.Model;
+
+namespace Snake
 {
     public class SnakeGame
     {
@@ -13,17 +15,23 @@
         private Snake Snake; // Snake object
         private Food Food; // Food object
         private ScoreBoard ScoreBoard = ScoreBoard.Instance; // ScoreBoard object
+        private Frame Frame = new Frame(Constants.windowWidth, Constants.windowHeight); // Frame object
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SnakeGame"/> class.
         /// </summary>
         public SnakeGame()
         {
+            Console.ForegroundColor = ConsoleColor.Black; // Set the color of the border
             Snake = new Snake(Origin, initialSize: 5);
             Food = new Food();
             Food.AddFood();
             _currentDirection = Direction.Right;
             _nextDirection = Direction.Right;
+            Frame.Render();
+            Console.SetCursorPosition(0, Constants.windowHeight + 2);
+            Console.WriteLine("Use the arrow keys to move the snake");
+
         }
 
         /// <summary>
@@ -114,109 +122,6 @@
                 case Direction.Down: return Direction.Up;
                 default: throw new ArgumentOutOfRangeException();
             }
-        }
-
-        /// <summary>
-        /// Draws the border lines for the game window.
-        /// </summary>
-        public void BorderLine()
-        {
-            Console.BackgroundColor = ConsoleColor.Blue; // Set the background color of the border
-            Console.ForegroundColor = ConsoleColor.Black; // Set the color of the border
-                                                          // Draw border lines at the top and bottom
-            for (int i = 0; i < Constants.windowWidth; i++)
-            {
-                BorderLineHorizontal(i, 0); // Draw border lines at the top
-                BorderLineHorizontal(i, Constants.windowHeight - 2); // Draw border lines at the bottom
-            }
-            // Draw border lines at the left and right
-            for (int i = 0; i < Constants.windowHeight - 1; i++)
-            {
-                BorderLineVertical(0, i);
-                BorderLineVertical(Constants.windowWidth - 1, i);
-            }
-            BorderLineCornerTopLeft(0, 0);
-            BorderLineCornerTopRight(Constants.windowWidth - 1, 0);
-            BorderLineCornerBottomLeft(0, Constants.windowHeight - 2);
-            BorderLineCornerBottomRight(Constants.windowWidth - 1, Constants.windowHeight - 2);
-            Console.ResetColor(); // Reset the color of the border
-
-
-            Console.SetCursorPosition(0, Constants.windowHeight);
-            Console.WriteLine("Use the arrow keys to move the snake");
-            Console.WriteLine("Press ESC to exit the game");
-        }
-
-        /// <summary>
-        /// Draws a vertical border line at the specified position.
-        /// </summary>
-        /// <param name="x">The x-coordinate.</param>
-        /// <param name="y">The y-coordinate.</param>
-        private static void BorderLineVertical(int x, int y)
-        {
-            Console.SetCursorPosition(x, y);
-            //Console.Write("■");
-            Console.Write("║");
-        }
-
-        /// <summary>
-        /// Draws a horizontal border line at the specified position.
-        /// </summary>
-        /// <param name="x">The x-coordinate.</param>
-        /// <param name="y">The y-coordinate.</param>
-        private static void BorderLineHorizontal(int x, int y)
-        {
-            Console.SetCursorPosition(x, y);
-            //Console.Write("■");
-            Console.Write("═");
-        }
-
-        /// <summary>
-        /// Draws the top-left corner of the border line at the specified position.
-        /// </summary>
-        /// <param name="x">The x-coordinate.</param>
-        /// <param name="y">The y-coordinate.</param>
-        private static void BorderLineCornerTopLeft(int x, int y)
-        {
-            Console.SetCursorPosition(x, y);
-            //Console.Write("■");
-            Console.Write("╔");
-        }
-
-        /// <summary>
-        /// Draws the top-right corner of the border line at the specified position.
-        /// </summary>
-        /// <param name="x">The x-coordinate.</param>
-        /// <param name="y">The y-coordinate.</param>
-        private static void BorderLineCornerTopRight(int x, int y)
-        {
-            Console.SetCursorPosition(x, y);
-            //Console.Write("■");
-            Console.Write("╗");
-        }
-
-        /// <summary>
-        /// Draws the bottom-left corner of the border line at the specified position.
-        /// </summary>
-        /// <param name="x">The x-coordinate.</param>
-        /// <param name="y">The y-coordinate.</param>
-        public static void BorderLineCornerBottomLeft(int x, int y)
-        {
-            Console.SetCursorPosition(x, y);
-            //Console.Write("■");
-            Console.Write("╚");
-        }
-
-        /// <summary>
-        /// Draws the bottom-right corner of the border line at the specified position.
-        /// </summary>
-        /// <param name="x">The x-coordinate.</param>
-        /// <param name="y">The y-coordinate.</param>
-        public static void BorderLineCornerBottomRight(int x, int y)
-        {
-            Console.SetCursorPosition(x, y);
-            //Console.Write("■");
-            Console.Write("╝");
         }
     }
 

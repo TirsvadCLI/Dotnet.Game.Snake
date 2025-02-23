@@ -31,6 +31,11 @@
             Console.Write("Score: " + _score);
         }
 
+        public int Score
+        {
+            get { return _score; }
+        }
+
         public void IncreaseScore(int score)
         {
             _score += score;

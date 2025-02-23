@@ -42,6 +42,24 @@ This is a simple snake game for windows console and linux console. It's written 
 - [Roadmap](#roadmap)
 - [Folder Structure](#folder-structure)
 
+## About The Snake Game
+
+This is a simple snake game for windows console and linux console. It's written in C# and uses .NET 9
+
+Snake eat food and grow. The game is over if the snake hits the wall or itself.
+
+Food gives points.
+
+- Food a gives 10 points.
+- Food b gives 11 points.
+- Food c gives 12 points.
+
+Food is placed randomly on the board.
+
+The snake can move up, down, left and right.
+
+The score is shown in the top.
+
 ## Getting Started
 
 To get a local copy up and running follow these simple steps.
@@ -82,8 +100,12 @@ This is an example of how to list things you need to use the software and how to
 - [x] Score system
 
 ## Roadmap
-- [ ] Game over screen
 - [ ] Save and load highscore
+
+## Change Log
+
+23-02-2025
+- Add game over screen
 
 ## Folder Structure
 
@@ -91,7 +113,7 @@ This is an example of how to list things you need to use the software and how to
 CSharp.Game.Snake/          # Root folder that contains the solution
     |
     |---Snake/              # Contains the project
-          |---Models/       # Contains the models
+          |---Model/        # Contains the models
     |---images/             # Contains images
     |---logo/               # Contains the logo
 ```
