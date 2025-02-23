@@ -11,4 +11,10 @@
     <Folder Include="helper\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="highscores.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

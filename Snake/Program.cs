@@ -1,4 +1,6 @@
-﻿namespace Snake
+﻿using Snake.Model;
+
+namespace Snake
 {
     internal class Program
     {
@@ -15,6 +17,7 @@
             TimeSpan tickRate = TimeSpan.FromMilliseconds(100); // 100ms per tick = 10 ticks per second
             SnakeGame snakeGame = new SnakeGame(); // Create a new game instance
             ScoreBoard scoreBoard = ScoreBoard.Instance; // Get the score board instance
+            HighScoreCollectionHelper highScoreCollectionHelper = new HighScoreCollectionHelper();
 
             using (CancellationTokenSource cts = new CancellationTokenSource()) // Create a cancellation token source
             {
@@ -36,6 +39,7 @@
 
                 var monitorKeyPresses = MonitorKeyPresses();
 
+                // Main game loop
                 do
                 {
                     snakeGame.OnGameTick();
@@ -44,16 +48,43 @@
                     await Task.Delay(tickRate); // Game speed = tick rate
                 } while (!snakeGame.GameOver);
 
-                cts.Cancel();
-                await monitorKeyPresses;
+                cts.Cancel(); // Cancel the key press monitor
+                await monitorKeyPresses; // Wait for the key press monitor to finish
             }
+
+            // Game over screen
             Frame GameOverFrame = new Frame(Constants.windowWidth, Constants.windowHeight);
             GameOverFrame.CenterRender(15, 4);
 
-            Console.ReadLine();
+            await Task.Delay(1000);
+
+            highScoreCollectionHelper.LoadFromFile(); // Load high scores from file
+
+            // Check if the score is a new high score
+            if (highScoreCollectionHelper.IsNewHighScore(scoreBoard.Score))
+            {
+                Console.Clear();
+                Console.WriteLine("New High Score!");
+                Console.Write("Enter your name: ");
+                string name = Console.ReadLine();
+                HighScore highScore = new HighScoreHelper(name, scoreBoard.Score);
+                highScoreCollectionHelper.AddHighScore(highScore);
+            }
+
             Console.Clear();
 
-            await Task.Delay(1000);
+            // Display high scores
+            Console.WriteLine("High Scores");
+            Console.WriteLine("-----------");
+            foreach (HighScore highScore in highScoreCollectionHelper.HighScores)
+            {
+                Console.WriteLine($"{highScore.Name}: {highScore.Score}");
+            }
+
+            highScoreCollectionHelper.SaveToFile(); // Save high scores to file
+
+            Console.WriteLine("Tryk på en tast for at afslutte");
+            Console.ReadKey();
         }
     }
 }
