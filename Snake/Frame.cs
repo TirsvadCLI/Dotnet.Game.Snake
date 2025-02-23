@@ -60,14 +60,14 @@
             // Draw top border
             Console.SetCursorPosition(_startX, _startY);
             Console.Write(_leftTop);
-            for (int i = 0; i < _width; i++)
+            for (int i = 0; i < _width - 1; i++)
             {
                 Console.Write(_horizontal);
             }
             Console.Write(_rightTop);
 
             // Draw left and right border
-            for (int i = 1; i < _height; i++)
+            for (int i = 1; i < _height - 2; i++)
             {
                 Console.SetCursorPosition(_startX, _startY + i);
                 Console.Write(_vertical);
@@ -75,25 +75,23 @@
                 Console.BackgroundColor = ConsoleColor.Black;
                 for (int j = 1; j < _width; j++)
                 {
-
                     Console.Write(" ");
                 }
                 Console.BackgroundColor = FrameColorBg;
-                Console.SetCursorPosition(_startX + _width + 1, _startY + i);
+                Console.SetCursorPosition(_startX + _width, _startY + i);
                 Console.Write(_vertical);
             }
 
             // Draw bottom border
-            Console.SetCursorPosition(_startX, _startY + _height);
+            Console.SetCursorPosition(_startX, _startY + _height - 2);
             Console.Write(_leftBottom);
-            for (int i = 0; i < _width; i++)
+            for (int i = 0; i < _width - 1; i++)
             {
                 Console.Write(_horizontal);
             }
             Console.Write(_rightBottom);
 
             Console.ResetColor();
-
         }
 
         public void CenterRender(int sizeX, int sizeY)
@@ -106,7 +104,7 @@
             Render(center: true);
 
             char[] gameOver = "Game Over".ToCharArray();
-            Console.SetCursorPosition(_startX + 1 + (sizeX - gameOver.Length) / 2, _startY + 2);
+            Console.SetCursorPosition(_startX + 1 + (sizeX - gameOver.Length) / 2, _startY + 1);
             foreach (char c in gameOver)
             {
                 Console.Write(c);

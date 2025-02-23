@@ -48,18 +48,18 @@
             switch (this._type)
             {
                 case 1:
-                    //Console.Write("🍎");
-                    Console.Write("a");
+                    Console.Write("🍎");
+                    //Console.Write("a");
                     foodPoint = 10;
                     break;
                 case 2:
-                    //Console.Write("🍌");
-                    Console.Write("b");
+                    Console.Write("🍌");
+                    //Console.Write("b");
                     foodPoint = 11;
                     break;
                 case 3:
-                    //Console.Write("🍒"); // not shown in console
-                    Console.Write("c");
+                    Console.Write("🍒");
+                    //Console.Write("c");
                     foodPoint = 12;
                     break;
             }

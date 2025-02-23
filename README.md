@@ -1,4 +1,4 @@
-[![Contributors][contributors-shield]][contributors-url]
+﻿[![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
@@ -20,11 +20,11 @@
         <img src="images/Screenshot_snakeGame.png" alt="The game" height="120">
     </a>
     <br />
-    <a href="https://github.com/TirsvadCLI/CSharp.Game.Snake"><strong>Explore the docs �</strong></a>
+    <a href="https://github.com/TirsvadCLI/CSharp.Game.Snake"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://github.com/TirsvadCLI/CSharp.Game.Snake/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
-    �
+    ·
     <a href="https://github.com/TirsvadCLI/CSharp.Game.Snake/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
     </p>
 </div>
@@ -50,9 +50,9 @@ Snake eat food and grow. The game is over if the snake hits the wall or itself.
 
 Food gives points.
 
-- Food a gives 10 points.
-- Food b gives 11 points.
-- Food c gives 12 points.
+- Food 🍎 gives 10 points.
+- Food 🍌 gives 11 points.
+- Food 🍒 gives 12 points.
 
 Food is placed randomly on the board.
 
