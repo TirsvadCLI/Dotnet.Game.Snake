@@ -7,8 +7,10 @@
         /// </summary>
         public static async Task Main()
         {
+            Console.OutputEncoding = System.Text.Encoding.UTF8; // Set console encoding to UTF-8 so we can use special char to show fruits
             Console.CursorVisible = false; // Hide the cursor
             Console.Clear(); // Clear the console
+
 
             TimeSpan tickRate = TimeSpan.FromMilliseconds(100); // 100ms per tick = 10 ticks per second
             SnakeGame snakeGame = new SnakeGame(); // Create a new game instance
@@ -39,7 +41,7 @@
                     snakeGame.OnGameTick();
                     snakeGame.Render();
                     scoreBoard.Render();
-                    await Task.Delay(tickRate);
+                    await Task.Delay(tickRate); // Game speed = tick rate
                 } while (!snakeGame.GameOver);
 
                 cts.Cancel();
