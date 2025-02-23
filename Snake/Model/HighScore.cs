@@ -6,26 +6,17 @@ namespace Snake.Model
     {
         public string Name { get; set; } = string.Empty;
         public int Score { get; set; }
-    }
 
-    public class HighScoreHelper : HighScore
-    {
-        public HighScoreHelper(string name, int score)
+        public HighScore(string name, int score)
         {
             Name = name;
             Score = score;
         }
     }
 
-
     public class HighScoreCollection
     {
         public List<HighScore> HighScores { get; set; } = new List<HighScore>();
-    }
-
-    public class HighScoreCollectionHelper : HighScoreCollection
-    {
-        private const string filePath = Constants.fileScore;
 
         /// <summary>
         /// Adds a new high score to the collection, maintaining a maximum of 10 records.
@@ -53,27 +44,34 @@ namespace Snake.Model
         /// <summary>
         /// Saves the high scores to a JSON file.
         /// </summary>
-        public void SaveToFile()
+        public void SaveToFile(string highScoresFileName = Constants.highScoresFileName)
         {
             JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
             string json = JsonSerializer.Serialize(this, options);
-            File.WriteAllText(filePath, json);
+            File.WriteAllText(highScoresFileName, json);
         }
 
         /// <summary>
         /// Loads the high scores from a JSON file.
         /// </summary>
-        public void LoadFromFile()
+        public void LoadFromFile(string highScoresFileName = Constants.highScoresFileName)
         {
-            if (File.Exists(filePath))
+            int c = 0;
+            if (File.Exists(highScoresFileName))
             {
-                var json = File.ReadAllText(filePath);
-                var highScoreCollection = JsonSerializer.Deserialize<HighScoreCollectionHelper>(json);
+                Clear();
+                var json = File.ReadAllText(highScoresFileName);
+                var highScoreCollection = JsonSerializer.Deserialize<HighScoreCollection>(json);
                 if (highScoreCollection != null)
                 {
                     HighScores = highScoreCollection.HighScores;
                 }
             }
+        }
+
+        public void Clear()
+        {
+            HighScores.Clear();
         }
     }
 }

@@ -7,8 +7,8 @@ namespace Snake
     /// </summary>
     public class Snake
     {
-        private List<Position> _body; // The snake's body
-        private int _growthSpurtsRemaining; // The number of growth spurts remaining
+        private List<Position> _body; //!< The snake's body
+        private int _growthSpurtsRemaining; //!< The number of growth spurts remaining
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Snake"/> class.
@@ -17,9 +17,9 @@ namespace Snake
         /// <param name="initialSize">The initial size of the snake.</param>
         public Snake(Position spawnLocation, int initialSize = 1)
         {
-            _body = new List<Position> { spawnLocation }; // Initialize the snake's body
-            _growthSpurtsRemaining = Math.Max(0, initialSize - 1); // Initialize the growth spurts remaining
-            Dead = false; // Initialize the snake's dead state
+            _body = new List<Position> { spawnLocation }; //!< Initialize the snake's body
+            _growthSpurtsRemaining = Math.Max(0, initialSize - 1); //!< Initialize the growth spurts remaining
+            Dead = false; //!< Initialize the snake's dead state
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Snake
         {
             if (Dead) throw new InvalidOperationException();
 
-            Position newHead; // The new position of the snake's head
+            Position newHead; //!< The new position of the snake's head
 
             switch (direction)
             {

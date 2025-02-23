@@ -5,22 +5,22 @@
     /// </summary>
     public class Food
     {
-        public FoodType? foodType; // The type of the food
-        public Position Position { get; set; } // The position of the food
-        private int gameWindowWidth = SnakeGame.gameWindowWidth;
-        private int gameWindowHight = SnakeGame.gameWindowHight;
+        public FoodType? foodType; //!< The type of the food
+        public Position Position { get; set; } //!< The position of the food
+        private int gameWindowWidth = SnakeGame.gameWindowWidth; //!< The width of the game window
+        private int gameWindowHight = SnakeGame.gameWindowHight; //!< The height of the game window
 
         /// <summary>
         /// Adds food to a random position in the game window.
         /// </summary>
         public void AddFood()
         {
-            var random = new Random();
-            var food = random.Next(1, 4);
-            var positionTop = random.Next(1, this.gameWindowHight);
-            var positionLeft = random.Next(1, this.gameWindowWidth);
-            Position = new Position(positionTop, positionLeft);
-            foodType = new FoodType(Position, food);
+            var random = new Random(); //!< Random number generator
+            var food = random.Next(1, 4); //!< Randow the type of the food
+            var positionTop = random.Next(1, this.gameWindowHight); //!< Random the top position of the food
+            var positionLeft = random.Next(1, this.gameWindowWidth); //!< Random the left position of the food
+            Position = new Position(positionTop, positionLeft); //!< Set the position of the food
+            foodType = new FoodType(Position, food); //!< Set the type of the food
             foodType.Render();
         }
     }
@@ -30,9 +30,9 @@
     /// </summary>
     public class FoodType
     {
-        public int foodPoint { get; set; } = 0; // The point of the food
-        public Position Position { get; } // The position of the food
-        private int _type; // The type of the food
+        public int foodPoint { get; set; } = 0; //!< The point of the food
+        public Position Position { get; } //!< The position of the food
+        private int _type; //!< The type of the food
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FoodType"/> class.
