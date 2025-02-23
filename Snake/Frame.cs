@@ -1,11 +1,14 @@
 ﻿namespace Snake
 {
+    /// <summary>
+    /// Represents a frame in the game.
+    /// </summary>
     public class Frame
     {
         private int _windowWidth; // Width of the frame
         private int _windowHeight; // Height of the frame
-        private int _width; // Width of the frame. Can be different from windowWidth when using center frame
-        private int _height; // Height of the frame. Can be different from windowHeight when using center frame
+        private int _width; // Width of the frame. Can be different from gameWindowSizeWidth when using center frame
+        private int _height; // Height of the frame. Can be different from gameWindowSizeHeight when using center frame
         private int _startX = 0; // Start position of the frame on the x-axis
         private int _startY = 0; // Start position of the frame on the y-axis
         private char _leftTop = '╔'; // Character for the top-left corner
@@ -95,7 +98,7 @@
             Console.Write(_rightTop);
 
             // Draw left and right border
-            for (int i = 1; i < _height - 2; i++)
+            for (int i = 1; i < _height - 1; i++)
             {
                 Console.SetCursorPosition(_startX, _startY + i);
                 Console.Write(_vertical);
@@ -111,7 +114,7 @@
             }
 
             // Draw bottom border
-            Console.SetCursorPosition(_startX, _startY + _height - 2);
+            Console.SetCursorPosition(_startX, _startY + _height - 1);
             Console.Write(_leftBottom);
             for (int i = 0; i < _width - 1; i++)
             {
@@ -129,20 +132,12 @@
         /// <param name="sizeY">The height of the frame.</param>
         public void CenterRender(int sizeX, int sizeY)
         {
-            _startX = (Constants.windowWidth - sizeX) / 2;
-            _startY = (Constants.windowHeight - sizeY) / 2;
+            _startX = (Constants.gameWindowSizeWidth - sizeX) / 2;
+            _startY = (Constants.gameWindowSizeHeight - sizeY) / 2;
             _width = sizeX;
             _height = sizeY;
 
             Render(center: true);
-
-            char[] gameOver = "Game Over".ToCharArray();
-            Console.SetCursorPosition(_startX + 1 + (sizeX - gameOver.Length) / 2, _startY + 1);
-            foreach (char c in gameOver)
-            {
-                Console.Write(c);
-                System.Threading.Thread.Sleep(100);
-            }
         }
     }
 }

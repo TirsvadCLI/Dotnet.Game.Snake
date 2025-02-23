@@ -2,11 +2,14 @@
 
 namespace Snake
 {
+    /// <summary>
+    /// Game Engine for the Snake game.
+    /// </summary>
     public class SnakeGame
     {
         // Constants
-        public const int gameWindowWidth = Constants.windowWidth - 2; // Width of the game
-        public const int gameWindowHight = Constants.windowHeight - 2; // Height of the game
+        public const int gameWindowWidth = Constants.gameWindowSizeWidth - 2; // Width of the game
+        public const int gameWindowHight = Constants.gameWindowSizeHeight - 2; // Height of the game
         // Variables
         private bool isGameOver = false; // Check if the game is over
         private static readonly Position Origin = new Position((gameWindowHight / 2), (SnakeGame.gameWindowWidth / 2)); // Origin position of the snake
@@ -15,7 +18,7 @@ namespace Snake
         private Snake Snake; // Snake object
         private Food Food; // Food object
         private ScoreBoard ScoreBoard = ScoreBoard.Instance; // ScoreBoard object
-        private Frame Frame = new Frame(Constants.windowWidth, Constants.windowHeight); // Frame object
+        private Frame Frame = new Frame(Constants.gameWindowSizeWidth, Constants.gameWindowSizeHeight); // Frame object
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SnakeGame"/> class.
@@ -29,7 +32,7 @@ namespace Snake
             _currentDirection = Direction.Right;
             _nextDirection = Direction.Right;
             Frame.Render();
-            Console.SetCursorPosition(0, Constants.windowHeight + 2);
+            Console.SetCursorPosition(0, Constants.gameWindowSizeHeight + 2);
             Console.WriteLine("Use the arrow keys to move the snake");
 
         }
@@ -85,10 +88,6 @@ namespace Snake
             bool levelUp = false;
 
             if (GameOver) throw new InvalidOperationException();
-
-            // TEST TODO: Remove this line
-            Console.SetCursorPosition(0, 27);
-            Console.WriteLine("Snake position: " + Snake.Head.Left + "." + Snake.Head.Top);
 
             _currentDirection = _nextDirection;
             Snake.Move(_currentDirection);

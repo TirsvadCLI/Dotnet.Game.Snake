@@ -25,7 +25,7 @@ namespace Snake.Model
 
     public class HighScoreCollectionHelper : HighScoreCollection
     {
-        private string filePath = "highscores.json";
+        private const string filePath = Constants.fileScore;
 
         /// <summary>
         /// Adds a new high score to the collection, maintaining a maximum of 10 records.

@@ -1,11 +1,14 @@
 ﻿namespace Snake
 {
+    /// <summary>
+    /// Class that represents the food in the game.
+    /// </summary>
     public class Food
     {
-        public FoodType? foodType;
-        public Position Position { get; set; }
-        private int gameWindowWidth = SnakeGame.gameWindowWidth - 2;
-        private int gameWindowHight = SnakeGame.gameWindowHight - 2;
+        public FoodType? foodType; // The type of the food
+        public Position Position { get; set; } // The position of the food
+        private int gameWindowWidth = SnakeGame.gameWindowWidth;
+        private int gameWindowHight = SnakeGame.gameWindowHight;
 
         /// <summary>
         /// Adds food to a random position in the game window.
@@ -14,14 +17,17 @@
         {
             var random = new Random();
             var food = random.Next(1, 4);
-            var positionTop = random.Next(1, gameWindowHight + 2);
-            var positionLeft = random.Next(1, gameWindowWidth + 2);
+            var positionTop = random.Next(1, this.gameWindowHight);
+            var positionLeft = random.Next(1, this.gameWindowWidth);
             Position = new Position(positionTop, positionLeft);
             foodType = new FoodType(Position, food);
             foodType.Render();
         }
     }
 
+    /// <summary>
+    /// Class that represents the food type in the game.
+    /// </summary>
     public class FoodType
     {
         public int foodPoint { get; set; } = 0; // The point of the food
