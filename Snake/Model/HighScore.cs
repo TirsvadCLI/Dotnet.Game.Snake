@@ -16,7 +16,29 @@ namespace Snake.Model
 
     public class HighScoreCollection
     {
+        private static HighScoreCollection? _instance;
+        private static readonly object _lock = new object();
+
         public List<HighScore> HighScores { get; set; } = new List<HighScore>();
+
+        // Parameterless constructor
+        public HighScoreCollection() { }
+
+        // Singleton instance property
+        public static HighScoreCollection Instance
+        {
+            get
+            {
+                lock (_lock)
+                {
+                    if (_instance == null)
+                    {
+                        _instance = new HighScoreCollection();
+                    }
+                    return _instance;
+                }
+            }
+        }
 
         /// <summary>
         /// Adds a new high score to the collection, maintaining a maximum of 10 records.
@@ -35,11 +57,11 @@ namespace Snake.Model
         /// <returns>True if the score is a new high score, otherwise false.</returns>
         public bool IsNewHighScore(int score)
         {
-            if (HighScores.Count < 10)
+            if (this.HighScores.Count < 10)
             {
                 return true;
             }
-            return score > HighScores.Min(h => h.Score);
+            return (score > this.HighScores.Min(h => h.Score));
         }
         /// <summary>
         /// Saves the high scores to a JSON file.
@@ -56,7 +78,6 @@ namespace Snake.Model
         /// </summary>
         public void LoadFromFile(string highScoresFileName = Constants.highScoresFileName)
         {
-            int c = 0;
             if (File.Exists(highScoresFileName))
             {
                 Clear();
@@ -64,7 +85,7 @@ namespace Snake.Model
                 var highScoreCollection = JsonSerializer.Deserialize<HighScoreCollection>(json);
                 if (highScoreCollection != null)
                 {
-                    HighScores = highScoreCollection.HighScores;
+                    this.HighScores = highScoreCollection.HighScores;
                 }
             }
         }

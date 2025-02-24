@@ -7,8 +7,8 @@ namespace Snake
     /// </summary>
     internal class Program
     {
-        static HighScoreCollection highScoreCollection = new HighScoreCollection();
-        static ScoreBoard scoreBoard = ScoreBoard.Instance; // Get the score board instance
+        static HighScoreCollection highScoreCollection = HighScoreCollection.Instance;
+        static ScoreBoard scoreBoard = ScoreBoard.Instance; // Make scoreBoard static
 
         /// <summary>
         /// The main entry point for the application.
@@ -43,8 +43,9 @@ namespace Snake
                 if (keyInfo.Key == ConsoleKey.F1)
                 {
                     Console.Clear(); // Clear the console
+                    scoreBoard.ResetScore();
                     await RunGame(); // Run the game
-                    // Check if the score is a new high score
+                                     // Check if the score is a new high score
                     if (highScoreCollection.IsNewHighScore(scoreBoard.Score))
                     {
                         AddNewHighScore(scoreBoard.Score); // Add new high score
@@ -130,7 +131,6 @@ namespace Snake
                     Console.Write(c);
                     System.Threading.Thread.Sleep(100);
                 }
-                scoreBoard.ResetScore();
             }
 
             await Task.Delay(1000);

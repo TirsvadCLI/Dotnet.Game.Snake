@@ -109,6 +109,7 @@ This is an example of how to list things you need to use the software and how to
 - [ ] Add more food types
 - [ ] Add bad food which reduce score (time limited witch it change food type)
 - [ ] Speed up game when snake eat food
+- [ ] Verdensrangliste online
 
 ## Change Log
 

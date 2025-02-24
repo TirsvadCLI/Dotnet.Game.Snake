@@ -34,7 +34,6 @@ namespace Snake
             Frame.Render();
             Console.SetCursorPosition(0, Constants.gameWindowSizeHeight + 2);
             Console.WriteLine("Use the arrow keys to move the snake");
-
         }
 
         /// <summary>
