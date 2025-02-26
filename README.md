@@ -40,11 +40,16 @@ This is a simple snake game for windows console and linux console. It's written 
 
 ## Table of Contents
 
+- [About The Snake Game](#about-the-snake-game)
 - [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
+    + [Optional for changing the code](#optional-for-changing-the-code)
   * [Build and Run](#build-and-run)
+    + [Powershell](#powershell)
+    + [Bash (Linux)](#bash--linux-)
 - [Features](#features)
 - [Roadmap](#roadmap)
+- [Change Log](#change-log)
 - [Folder Structure](#folder-structure)
 
 ## About The Snake Game
@@ -78,25 +83,64 @@ This is an example of how to list things you need to use the software and how to
     https://dotnet.microsoft.com/download/dotnet/9.0
     ```
 
+#### Optional for changing the code
+
 - Visual Studio 2022
     ```
     https://visualstudio.microsoft.com/
     ```
 
-### Build and Run
+#### Powershell
 
-1. Clone the repo
-    ```
-    git clone git@github.com:TirsvadCLI/CSharp.Game.Snake.git
-    ```
+1. Open a powershell window and enter the following commands to download game
 
-2. Open the project in Visual Studio 2022
+```powershell
+# Define the URL and the destination file path
+$url = "https://github.com/TirsvadCLI/CSharp.Game.Snake/releases/download/1.1.0/Snake.zip"
+$destination = "Snake.zip"
+$unzipPath = "Snake"
 
-3. Build the project
+# Download the file
+Invoke-WebRequest -Uri $url -OutFile $destination
 
-4. Run the project
+# Unzip the file
+Expand-Archive -Path $destination -DestinationPath $unzipPath
 
-5. Use the arrow keys to move the snake
+# Remove the zip file
+Remove-Item $destination
+```
+
+2. Go to the folder and run the game
+```powershell
+cd Snake
+.\Snake.exe
+```
+
+#### Bash (Linux)
+
+1. Open a bash window and enter the following commands to download game
+```bash
+# Define the URL and the destination file path
+url="https://github.com/TirsvadCLI/CSharp.Game.Snake/releases/download/1.1.0/Snake.zip"
+destination="Snake"
+unzipPath="Snake"
+
+# Download the file
+wget $url --output-file=$destination
+
+# Unzip the file
+rm ${destination}
+unzip $destination -d $unzipPath
+
+# Remove the zip file
+rm ${destination}.zip
+```
+
+2. Go to the folder and run the game
+```bash
+cd Snake
+./Snake.exe
+```
 
 ## Features
 
@@ -106,10 +150,12 @@ This is an example of how to list things you need to use the software and how to
 - [x] Save and load highscore
  
 ## Roadmap
+
 - [ ] Add more food types
 - [ ] Add bad food which reduce score (time limited witch it change food type)
 - [ ] Speed up game when snake eat food
-- [ ] Verdensrangliste online
+- [ ] World highscore online
+- [ ] Multi language support
 
 ## Change Log
 
@@ -125,11 +171,10 @@ Version 1.0.0
 
 ```
 CSharp.Game.Snake/          # Root folder that contains the solution
-    |
-    |---Snake/              # Contains the project
-          |---Model/        # Contains the models
-    |---images/             # Contains images
-    |---logo/               # Contains the logo
+|---Snake/                  # Contains the project
+      |---Model/            # Contains the models
+|---images/                 # Contains images
+|---logo/                   # Contains the logo
 ```
 
 <!-- MARKDOWN LINKS & IMAGES -->
