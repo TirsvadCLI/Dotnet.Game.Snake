@@ -1,6 +1,8 @@
-﻿[![Contributors][contributors-shield]][contributors-url]
+﻿<!-- BADGES V1 -->
+[![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
+[![downloads][downloads-shield]][downloads-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
@@ -184,6 +186,8 @@ CSharp.Game.Snake/          # Root folder that contains the solution
 [forks-url]: https://github.com/TirsvadCLI/CSharp.Game.Snake/network/members
 [stars-shield]: https://img.shields.io/github/stars/TirsvadCLI/CSharp.Game.Snake?style=for-the-badge
 [stars-url]: https://github.com/TirsvadCLI/CSharp.Game.Snake/stargazers
+[downloads-shield]: https://img.shields.io/github/downloads/TirsvadCLI/CSharp.Game.Snake/total?style=for-the-badge
+[downloads-url]: https://github.com/TirsvadCLI/CSharp.Game.Snake/graphs/traffic
 [issues-shield]: https://img.shields.io/github/issues/TirsvadCLI/CSharp.Game.Snake?style=for-the-badge
 [issues-url]: https://github.com/TirsvadCLI/CSharp.Game.Snake/issues
 [license-shield]: https://img.shields.io/github/license/TirsvadCLI/CSharp.Game.Snake?style=for-the-badge
