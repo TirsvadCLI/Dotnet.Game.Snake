@@ -1,0 +1,109 @@
+classDiagram
+    Direction <|-- Snake
+    Position <|-- Snake
+    Position <|-- Food
+    Position <|-- FoodType
+    HighScoreCollection <|-- HighScore
+    ScoreBoard <|-- SnakeGame
+    Frame <|-- SnakeGame
+
+    class Direction {
+        <<enumeration>>
+        Up
+        Down
+        Left
+        Right
+    }
+
+    class Position {
+        int Top
+        int Left
+        Position DownBy(int)
+        Position RightBy(int)
+    }
+
+    class Frame {
+        -int _windowWidth
+        -int _windowHeight
+        -int _width
+        -int _height
+        -int _startX
+        -int _startY
+        -char _leftTop
+        -char _rightTop
+        -char _leftBottom
+        -char _rightBottom
+        -char _horizontal
+        -char _vertical
+        -ConsoleColor FrameColorBg
+        -ConsoleColor FrameColorFg
+        +Frame(int, int)
+        +Frame(int, int, char, char, char, char, char, char)
+        +SetColorBg(ConsoleColor)
+        +SetColorFg(ConsoleColor)
+        +Render(bool)
+        +CenterRender(int, int)
+    }
+
+    class Food {
+        FoodType? foodType
+        Position Position
+        int gameWindowWidth
+        int gameWindowHight
+        +AddFood()
+    }
+
+    class FoodType {
+        int foodPoint
+        Position Position
+        int _type
+        +FoodType(Position, int)
+        +Render()
+    }
+
+    class Snake {
+        List<Position> _body
+        int _growthSpurtsRemaining
+        +Snake(Position, int)
+        +bool Dead
+        +Position Head
+        +Move(Direction)
+    }
+
+    class HighScore {
+        string Name
+        int Score
+        +HighScore(string, int)
+    }
+
+    class HighScoreCollection {
+        HighScoreCollection? _instance
+        object _lock
+        List<HighScore> HighScores
+        +Instance: HighScoreCollection
+        +AddHighScore(HighScore)
+        +IsNewHighScore(int): bool
+        +SaveToFile(string)
+        +LoadFromFile(string)
+        +Clear()
+    }
+
+    class ScoreBoard {
+        ScoreBoard? _instance
+        object _lock
+        int _score
+        +Instance: ScoreBoard
+        +Render()
+        +Score: int
+        +IncreaseScore(int)
+        +ResetScore()
+    }
+
+    class SnakeGame {
+        int gameWindowWidth
+        int gameWindowHight
+        bool GameOver
+        +OnKeyPress(ConsoleKey)
+        +OnGameTick(): bool
+        +Render()
+    }
