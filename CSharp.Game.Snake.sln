@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snake", "Snake\Snake.csproj", "{C21621C3-00C8-43B9-8911-CB2B1715E360}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3CCCE1B8-22B0-435C-9167-6C3B8E62AF7F}"
 	ProjectSection(SolutionItems) = preProject
 		Doxyfile = Doxyfile
@@ -13,16 +11,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{9B243F6E-A0B9-4688-9AE6-894B50355CC2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snake", "src\Snake\Snake.csproj", "{ACD33663-799A-2A1F-7201-7B8C67AC5008}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C21621C3-00C8-43B9-8911-CB2B1715E360}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C21621C3-00C8-43B9-8911-CB2B1715E360}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C21621C3-00C8-43B9-8911-CB2B1715E360}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C21621C3-00C8-43B9-8911-CB2B1715E360}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACD33663-799A-2A1F-7201-7B8C67AC5008}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACD33663-799A-2A1F-7201-7B8C67AC5008}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACD33663-799A-2A1F-7201-7B8C67AC5008}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACD33663-799A-2A1F-7201-7B8C67AC5008}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
