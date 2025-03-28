@@ -13,7 +13,7 @@
         private ScoreBoard() { }
 
         /// <summary>
-        /// Gets the single instance of the ScoreBoard class.
+        /// Gets the single instance of the _scoreBoard class.
         /// </summary>
         public static ScoreBoard Instance
         {

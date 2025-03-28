@@ -1,5 +1,7 @@
 ﻿using Snake.Model;
 
+using TirsvadCLI;
+
 namespace Snake
 {
     /// <summary>
@@ -7,6 +9,7 @@ namespace Snake
     /// </summary>
     internal class Program
     {
+        static private bool _useEmojis = true; // Use emojis for the game
         static HighScoreCollection highScoreCollection = HighScoreCollection.Instance;
         static ScoreBoard scoreBoard = ScoreBoard.Instance; // Make scoreBoard static
 
@@ -25,45 +28,50 @@ namespace Snake
             do
             {
                 Console.Clear(); // Clear the console
-                Frame menuFrame = new Frame(Constants.gameWindowSizeWidth, Constants.gameWindowSizeHeight);
-                menuFrame.CenterRender(30, 6);
+                Frame menuFrame = new Frame(Constants.gameWindowSizeWidth, Constants.gameWindowSizeHeight, 30, 7);
+                menuFrame.SetColorBg(ConsoleColor.Black);
+                menuFrame.SetColorFg(ConsoleColor.Blue);
+                menuFrame.Render(true);
                 int x = (Constants.gameWindowSizeWidth - 30) / 2 + 2;
-                int y = (Constants.gameWindowSizeHeight - 5) / 2 + 1;
+                int y = (Constants.gameWindowSizeHeight - 5) / 2;
 
                 Console.SetCursorPosition(x, y++);
-                Console.Write("Welcome to Snake Game!");
+                Console.Write("Welcome to _snake Game!");
                 Console.SetCursorPosition(x, y++);
                 Console.Write("F1: Start new game");
                 Console.SetCursorPosition(x, y++);
                 Console.Write("F2: Show High score ");
                 Console.SetCursorPosition(x, y++);
+                Console.Write("F3: Settings");
+                Console.SetCursorPosition(x, y++);
                 Console.Write("ESC: Exit");
 
                 ConsoleKeyInfo keyInfo = Console.ReadKey();
-                if (keyInfo.Key == ConsoleKey.F1)
+                switch (keyInfo.Key)
                 {
-                    Console.Clear(); // Clear the console
-                    scoreBoard.ResetScore();
-                    await RunGame(); // Run the game
-                                     // Check if the score is a new high score
-                    if (highScoreCollection.IsNewHighScore(scoreBoard.Score))
-                    {
-                        AddNewHighScore(scoreBoard.Score); // Add new high score
-                    }
-                    Console.Clear();
-                }
-                else if (keyInfo.Key == ConsoleKey.F2)
-                {
-                    Console.Clear(); // Clear the console
-                    PrintHighScore();
-                }
-                else if (keyInfo.Key == ConsoleKey.Escape)
-                {
-                    break;
+                    case ConsoleKey.F1:
+                        scoreBoard.ResetScore();
+                        await RunGame(); // Run the game
+                                         // Check if the score is a new high score
+                        if (highScoreCollection.IsNewHighScore(scoreBoard.Score))
+                        {
+                            AddNewHighScore(scoreBoard.Score); // Add new high score
+                        }
+                        break;
+                    case ConsoleKey.F2:
+                        PrintHighScore();
+                        break;
+                    case ConsoleKey.F3:
+                        Settings();
+                        break;
+                    case ConsoleKey.Escape:
+                        highScoreCollection.SaveToFile(); // Save high scores to file
+                        Environment.Exit(0);
+                        break;
+                    default:
+                        break;
                 }
             } while (true);
-
-            highScoreCollection.SaveToFile(); // Save high scores to file
         }
 
         /// <summary>
@@ -74,7 +82,7 @@ namespace Snake
         {
             // Game settings
             TimeSpan tickRate = TimeSpan.FromMilliseconds(100); // 100ms per tick = 10 ticks per second
-            SnakeGame snakeGame = new SnakeGame(); // Create a new game instance
+            SnakeGame snakeGame = new SnakeGame(_useEmojis); // Create a new game instance
 
             // In C#, the CancellationTokenSource is a class used to send cancellation signals to one or more tasks or operations.
             // It is part of the Task Parallel Library (TPL) and is commonly used in asynchronous programming to gracefully cancel operations when they are no longer needed.
@@ -116,10 +124,10 @@ namespace Snake
 
             // Game over screen
             {
-                Frame GameOverFrame = new Frame(Constants.gameWindowSizeWidth, Constants.gameWindowSizeHeight);
                 int centerFrameWidth = 15;
                 int centerFrameHeight = 3;
-                GameOverFrame.CenterRender(centerFrameWidth, centerFrameHeight);
+                Frame GameOverFrame = new Frame(Constants.gameWindowSizeWidth, Constants.gameWindowSizeHeight, centerFrameWidth, centerFrameHeight);
+                GameOverFrame.Render(true);
 
                 char[] gameOver = "Game Over".ToCharArray();
                 int startX = (Constants.gameWindowSizeWidth - gameOver.Length) / 2;
@@ -146,7 +154,7 @@ namespace Snake
             int centerFrameHeight = 5;
 
             Frame AddNewHighScoreFrame = new Frame(Constants.gameWindowSizeWidth, Constants.gameWindowSizeHeight);
-            AddNewHighScoreFrame.CenterRender(centerFrameWidth, centerFrameHeight);
+            AddNewHighScoreFrame.Render(true);
 
             int startX = (Constants.gameWindowSizeWidth - centerFrameWidth) / 2 + 2;
             int startY = (Constants.gameWindowSizeHeight - centerFrameHeight) / 2 + 1;
@@ -175,7 +183,7 @@ namespace Snake
         /// </summary>
         public static void PrintHighScore()
         {
-            // Frame for high scores
+            // _frame for high scores
             Frame HighScoresFrame = new Frame(Constants.gameWindowSizeWidth, Constants.gameWindowSizeHeight - 3);
             HighScoresFrame.Render();
 
@@ -199,6 +207,48 @@ namespace Snake
 
             Console.WriteLine("Press a key to continue");
             Console.ReadKey();
+        }
+
+        public static void Settings()
+        {
+            Frame menuFrame = new Frame(Constants.gameWindowSizeWidth, Constants.gameWindowSizeHeight, 30, 7);
+            menuFrame.SetColorBg(ConsoleColor.Black);
+            menuFrame.SetColorFg(ConsoleColor.Blue);
+            do
+            {
+                Console.Clear(); // Clear the console
+                menuFrame.Render(true);
+                int x = (Constants.gameWindowSizeWidth - 30) / 2 + 2;
+                int y = (Constants.gameWindowSizeHeight - 5) / 2;
+
+                if (_useEmojis)
+                {
+                    Console.SetCursorPosition(x, y++);
+                    Console.Write("F1: Toggle use emojis: Yes");
+                }
+                else
+                {
+                    Console.SetCursorPosition(x, y++);
+                    Console.Write("F1: Toggle use emojis: No");
+                }
+
+                Console.SetCursorPosition(x, y++);
+                Console.Write("ESC: Back");
+
+                ConsoleKeyInfo keyInfo = Console.ReadKey();
+                switch (keyInfo.Key)
+                {
+                    case ConsoleKey.F1:
+                        _useEmojis = !_useEmojis;
+                        break;
+                    case ConsoleKey.Escape:
+                        Console.Clear();
+                        return;
+                    default:
+                        Console.Clear();
+                        break;
+                }
+            } while (true);
         }
     }
 }
