@@ -5,7 +5,7 @@ using TirsvadCLI;
 namespace Snake
 {
     /// <summary>
-    /// Game Engine for the Snake game.
+    /// Game Engine for the _snake game.
     /// </summary>
     public class SnakeGame
     {
@@ -13,27 +13,32 @@ namespace Snake
         public const int gameWindowWidth = Constants.gameWindowSizeWidth - 2; //!< Width of the game
         public const int gameWindowHight = Constants.gameWindowSizeHeight - 2; //!< Height of the game
         // Variables
-        private bool isGameOver = false; // Check if the game is over
-        private static readonly Position Origin = new Position((gameWindowHight / 2), (SnakeGame.gameWindowWidth / 2)); // Origin position of the snake
+        private bool _isGameOver = false; // Check if the game is over
+        private static readonly Position _origin = new Position((gameWindowHight / 2), (SnakeGame.gameWindowWidth / 2)); // _origin position of the snake
+        private bool _useEmojis = false; // Check if the game use emojis
         private Direction _currentDirection; // Current direction of the snake
         private Direction _nextDirection; // Next direction of the snake
-        private Snake Snake; // Snake object
-        private Food Food; // Food object
-        private ScoreBoard ScoreBoard = ScoreBoard.Instance; // ScoreBoard object
-        private Frame Frame = new Frame(Constants.gameWindowSizeWidth, Constants.gameWindowSizeHeight); // Frame object
+        private Snake _snake; // _snake object
+        private Food _food; // _food object
+        private ScoreBoard _scoreBoard = ScoreBoard.Instance; // _scoreBoard object
+        private Frame _frame = new Frame(Constants.gameWindowSizeWidth, Constants.gameWindowSizeHeight); // _frame object
+
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SnakeGame"/> class.
         /// </summary>
-        public SnakeGame()
+        public SnakeGame(bool useEmojis)
         {
             Console.ForegroundColor = ConsoleColor.Black; // Set the color of the border
-            Snake = new Snake(Origin, initialSize: 5);
-            Food = new Food();
-            Food.AddFood();
+            _useEmojis = useEmojis;
+            _snake = new Snake(_origin, initialSize: 5);
+            _food = new Food();
+            _food.AddFood(useEmojis);
             _currentDirection = Direction.Right;
             _nextDirection = Direction.Right;
-            Frame.Render();
+            _frame.SetColorBg(ConsoleColor.White);
+            _frame.SetColorFg(ConsoleColor.Black);
+            _frame.Render();
             Console.SetCursorPosition(0, Constants.gameWindowSizeHeight + 2);
             Console.WriteLine("Use the arrow keys to move the snake");
         }
@@ -41,7 +46,7 @@ namespace Snake
         /// <summary>
         /// Gets a value indicating whether the game is over.
         /// </summary>
-        public bool GameOver => Snake.Dead;
+        public bool GameOver => _snake.Dead;
 
         /// <summary>
         /// Handles key press events to change the direction of the snake.
@@ -91,15 +96,15 @@ namespace Snake
             if (GameOver) throw new InvalidOperationException();
 
             _currentDirection = _nextDirection;
-            Snake.Move(_currentDirection);
+            _snake.Move(_currentDirection);
 
             // If the snake's head moves to the same position as an apple, the snake
             // eats it.
-            if (Snake.Head.Equals(Food.Position) && Food.foodType != null)
+            if (_snake.Head.Equals(_food.Position) && _food.foodType != null)
             {
-                ScoreBoard.IncreaseScore(Food.foodType.foodPoint);
-                Snake.Grow();
-                Food.AddFood();
+                _scoreBoard.IncreaseScore(_food.foodType.foodPoint);
+                _snake.Grow();
+                _food.AddFood(_useEmojis);
                 levelUp = true;
             }
             return levelUp;
@@ -110,8 +115,8 @@ namespace Snake
         /// </summary>
         public void Render()
         {
-            Snake.Render();
-            Food.foodType?.Render();
+            _snake.Render();
+            _food.foodType?.Render();
             Console.SetCursorPosition(0, 0);
         }
 
