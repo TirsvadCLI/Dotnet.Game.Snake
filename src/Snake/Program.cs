@@ -1,5 +1,7 @@
 ﻿using Snake.Model;
 
+using TirsvadCLI;
+
 namespace Snake
 {
     /// <summary>
@@ -25,8 +27,8 @@ namespace Snake
             do
             {
                 Console.Clear(); // Clear the console
-                Frame menuFrame = new Frame(Constants.gameWindowSizeWidth, Constants.gameWindowSizeHeight);
-                menuFrame.CenterRender(30, 6);
+                Frame menuFrame = new Frame(Constants.gameWindowSizeWidth, Constants.gameWindowSizeHeight, 30, 6);
+                menuFrame.Render(true);
                 int x = (Constants.gameWindowSizeWidth - 30) / 2 + 2;
                 int y = (Constants.gameWindowSizeHeight - 5) / 2 + 1;
 
@@ -116,10 +118,10 @@ namespace Snake
 
             // Game over screen
             {
-                Frame GameOverFrame = new Frame(Constants.gameWindowSizeWidth, Constants.gameWindowSizeHeight);
                 int centerFrameWidth = 15;
                 int centerFrameHeight = 3;
-                GameOverFrame.CenterRender(centerFrameWidth, centerFrameHeight);
+                Frame GameOverFrame = new Frame(Constants.gameWindowSizeWidth, Constants.gameWindowSizeHeight, centerFrameWidth, centerFrameHeight);
+                GameOverFrame.Render(true);
 
                 char[] gameOver = "Game Over".ToCharArray();
                 int startX = (Constants.gameWindowSizeWidth - gameOver.Length) / 2;
@@ -146,7 +148,7 @@ namespace Snake
             int centerFrameHeight = 5;
 
             Frame AddNewHighScoreFrame = new Frame(Constants.gameWindowSizeWidth, Constants.gameWindowSizeHeight);
-            AddNewHighScoreFrame.CenterRender(centerFrameWidth, centerFrameHeight);
+            AddNewHighScoreFrame.Render(true);
 
             int startX = (Constants.gameWindowSizeWidth - centerFrameWidth) / 2 + 2;
             int startY = (Constants.gameWindowSizeHeight - centerFrameHeight) / 2 + 1;

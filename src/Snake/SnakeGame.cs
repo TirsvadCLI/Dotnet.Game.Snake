@@ -1,5 +1,7 @@
 ﻿using Snake.Model;
 
+using TirsvadCLI;
+
 namespace Snake
 {
     /// <summary>
