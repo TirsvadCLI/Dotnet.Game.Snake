@@ -1,6 +1,6 @@
 ﻿using Snake.Model;
 
-using TirsvadCLI;
+using TirsvadCLI.Frame;
 
 namespace Snake
 {
