@@ -9,7 +9,7 @@
 
 <br />
 <div align="center">
-    <a href="https://github.com/TirsvadCLI/CSharp.Game.Snake">
+    <a href="https://github.com/TirsvadCLI/Dotnet.Game.Snake">
         <img src="logo/logo.png" alt="Logo" width="80" height="80">
     </a>
     <h3 align="center">Snake Game</h3>
@@ -18,22 +18,22 @@
     <br />
     <br />
     <!-- PROJECT SCREENSHOTS -->
-    <a href="https://github.com/TirsvadCLI/CSharp.Game.Snake/blob/master/images/Screenshot_menu.png">
+    <a href="https://github.com/TirsvadCLI/Dotnet.Game.Snake/blob/master/images/Screenshot_menu.png">
         <img src="images/Screenshot_menu.png" alt="The game" height="120">
     </a>
-    <a href="https://github.com/TirsvadCLI/CSharp.Game.Snake/blob/master/images/Screenshot_snakeGame.png">
+    <a href="https://github.com/TirsvadCLI/Dotnet.Game.Snake/blob/master/images/Screenshot_snakeGame.png">
         <img src="images/Screenshot_snakeGame.png" alt="The game" height="120">
     </a>
-    <a href="https://github.com/TirsvadCLI/CSharp.Game.Snake/blob/master/images/Screenshot_highscore.png">
+    <a href="https://github.com/TirsvadCLI/Dotnet.Game.Snake/blob/master/images/Screenshot_highscore.png">
         <img src="images/Screenshot_highscore.png" alt="The game" height="120">
     </a>
     <br />
-    <a href="https://github.com/TirsvadCLI/CSharp.Game.Snake"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/TirsvadCLI/Dotnet.Game.Snake"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/TirsvadCLI/CSharp.Game.Snake/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    <a href="https://github.com/TirsvadCLI/Dotnet.Game.Snake/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     ·
-    <a href="https://github.com/TirsvadCLI/CSharp.Game.Snake/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+    <a href="https://github.com/TirsvadCLI/Dotnet.Game.Snake/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
     </p>
 </div>
 
@@ -98,7 +98,7 @@ This is an example of how to list things you need to use the software and how to
 
 ```powershell
 # Define the URL and the destination file path
-$url = "https://github.com/TirsvadCLI/CSharp.Game.Snake/releases/download/1.1.0/Snake.zip"
+$url = "https://github.com/TirsvadCLI/Dotnet.Game.Snake/releases/download/1.1.0/Snake.zip"
 $destination = "Snake.zip"
 $unzipPath = "Snake"
 
@@ -123,7 +123,7 @@ cd Snake
 1. Open a bash window and enter the following commands to download game
 ```bash
 # Define the URL and the destination file path
-url="https://github.com/TirsvadCLI/CSharp.Game.Snake/releases/download/1.1.0/Snake.zip"
+url="https://github.com/TirsvadCLI/Dotnet.Game.Snake/releases/download/1.1.0/Snake.zip"
 destination="Snake"
 unzipPath="Snake"
 
@@ -172,7 +172,7 @@ Version 1.0.0
 ## Folder Structure
 
 ```
-CSharp.Game.Snake/          # Root folder that contains the solution
+Dotnet.Game.Snake/          # Root folder that contains the solution
 |---Snake/                  # Contains the project
       |---Model/            # Contains the models
 |---images/                 # Contains images
@@ -180,17 +180,17 @@ CSharp.Game.Snake/          # Root folder that contains the solution
 ```
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[contributors-shield]: https://img.shields.io/github/contributors/TirsvadCLI/CSharp.Game.Snake?style=for-the-badge
-[contributors-url]: https://github.com/TirsvadCLI/CSharp.Game.Snake/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/TirsvadCLI/CSharp.Game.Snake?style=for-the-badge
-[forks-url]: https://github.com/TirsvadCLI/CSharp.Game.Snake/network/members
-[stars-shield]: https://img.shields.io/github/stars/TirsvadCLI/CSharp.Game.Snake?style=for-the-badge
-[stars-url]: https://github.com/TirsvadCLI/CSharp.Game.Snake/stargazers
-[downloads-shield]: https://img.shields.io/github/downloads/TirsvadCLI/CSharp.Game.Snake/total?style=for-the-badge
-[downloads-url]: https://github.com/TirsvadCLI/CSharp.Game.Snake/graphs/traffic
-[issues-shield]: https://img.shields.io/github/issues/TirsvadCLI/CSharp.Game.Snake?style=for-the-badge
-[issues-url]: https://github.com/TirsvadCLI/CSharp.Game.Snake/issues
-[license-shield]: https://img.shields.io/github/license/TirsvadCLI/CSharp.Game.Snake?style=for-the-badge
-[license-url]: https://github.com/TirsvadCLI/CSharp.Game.Snake/blob/master/LICENSE
+[contributors-shield]: https://img.shields.io/github/contributors/TirsvadCLI/Dotnet.Game.Snake?style=for-the-badge
+[contributors-url]: https://github.com/TirsvadCLI/Dotnet.Game.Snake/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/TirsvadCLI/Dotnet.Game.Snake?style=for-the-badge
+[forks-url]: https://github.com/TirsvadCLI/Dotnet.Game.Snake/network/members
+[stars-shield]: https://img.shields.io/github/stars/TirsvadCLI/Dotnet.Game.Snake?style=for-the-badge
+[stars-url]: https://github.com/TirsvadCLI/Dotnet.Game.Snake/stargazers
+[downloads-shield]: https://img.shields.io/github/downloads/TirsvadCLI/Dotnet.Game.Snake/total?style=for-the-badge
+[downloads-url]: https://github.com/TirsvadCLI/Dotnet.Game.Snake/releases
+[issues-shield]: https://img.shields.io/github/issues/TirsvadCLI/Dotnet.Game.Snake?style=for-the-badge
+[issues-url]: https://github.com/TirsvadCLI/Dotnet.Game.Snake/issues
+[license-shield]: https://img.shields.io/github/license/TirsvadCLI/Dotnet.Game.Snake?style=for-the-badge
+[license-url]: https://github.com/TirsvadCLI/Dotnet.Game.Snake/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/jens-tirsvad-nielsen-13b795b9/
