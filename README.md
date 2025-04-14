@@ -14,19 +14,20 @@ This is a simple snake game for windows console and linux console. It's written 
 
 ## Table of Contents
 
-- [About The Snake Game](#about-the-snake-game)
-- [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
-    + [Optional for changing the code](#optional-for-changing-the-code)
-  * [Build and Run](#build-and-run)
-    + [Powershell](#powershell)
-    + [Bash (Linux)](#bash--linux-)
-- [Features](#features)
-- [Roadmap](#roadmap)
-- [Change Log](#change-log)
-- [Folder Structure](#folder-structure)
+- [Overview](#Overview)
+- [Features](#Features)
+- [Installation](#Installation)
+  - [Download the game](#Download-the-game)
+    - [Windows](#Windows)
+    - [Linux](#Linux)
+  - [Optional for development](#Optional-for-development)
+- [Roadmap](#Roadmap)
+- [Contributing](#Contributing)
+- [Bug / Issue Reporting](#Bug--Issue-Reporting)
+- [License](#License)
 
-## About The Snake Game
+
+## Overview
 
 This is a simple snake game for windows console and linux console. It's written in C# and uses .NET 9
 
@@ -44,30 +45,21 @@ The snake can move up, down, left and right.
 
 The score is shown in the top.
 
-## Getting Started
+## Features
+
+- [x] Windows console support
+- [x] Linux console support
+- [x] Score system
+
+## Installation
+
+### Download the game
 
 To get a local copy up and running follow these simple steps.
 
-### Prerequisites
+#### Windows
 
-This is an example of how to list things you need to use the software and how to install them.
-
-- .NET 9.0
-    ```
-    https://dotnet.microsoft.com/download/dotnet/9.0
-    ```
-
-#### Optional for changing the code
-
-- Visual Studio 2022
-    ```
-    https://visualstudio.microsoft.com/
-    ```
-
-#### Powershell
-
-1. Open a powershell window and enter the following commands to download game
-
+Get zip and extract zip file from github
 ```powershell
 # Define the URL and the destination file path
 $url = "https://github.com/TirsvadCLI/Dotnet.Game.Snake/releases/download/1.1.2/Snake.zip"
@@ -82,46 +74,47 @@ Expand-Archive -Path $destination -DestinationPath $unzipPath
 
 # Remove the zip file
 Remove-Item $destination
-```
 
-2. Go to the folder and run the game
-```powershell
-cd Snake
+# Navigate to the extracted folder
+Set-Location -Path $unzipPath
+
+#Run the game
 .\Snake.exe
 ```
 
-#### Bash (Linux)
+#### Linux
 
-1. Open a bash window and enter the following commands to download game
+Get zip and extract zip file from github
 ```bash
 # Define the URL and the destination file path
 url="https://github.com/TirsvadCLI/Dotnet.Game.Snake/releases/download/1.1.2/Snake.zip"
-destination="Snake"
+destination="Snake.zip"
 unzipPath="Snake"
 
 # Download the file
-wget $url --output-file=$destination
+wget -O $destination $url
 
 # Unzip the file
-rm ${destination}
 unzip $destination -d $unzipPath
 
 # Remove the zip file
-rm ${destination}.zip
-```
+rm $destination
 
-2. Go to the folder and run the game
-```bash
-cd Snake
+# Navigate to the extracted folder
+cd $unzipPath
+
+#Run the game
 ./Snake.exe
 ```
 
-## Features
+#### Optional for development
 
-- [x] Windows console support
-- [x] Linux console support
-- [x] Score system
-- [x] Save and load highscore
+We are using Visual Studio 2022 for development. You can use any IDE you want.
+
+```powdershell
+# Clone the repo
+git clone https://github.com/TirsvadCLI/Dotnet.Game.Snake.git
+```
  
 ## Roadmap
 
@@ -131,25 +124,47 @@ cd Snake
 - [ ] World highscore online
 - [ ] Multi language support
 
-## Change Log
+## Contributing
 
-Version 1.1.0
-- Add Frame for HighScore Board
-- Add Frame for input name for new HighScore
-- Add menu for new game, highscore and exit
-Version 1.0.0
-- Add game over Board
-- Add highScore Board
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-## Folder Structure
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-```
-Dotnet.Game.Snake/          # Root folder that contains the solution
-|---Snake/                  # Contains the project
-      |---Model/            # Contains the models
-|---images/                 # Contains images
-|---logo/                   # Contains the logo
-```
+## Bug / Issue Reporting  
+
+If you encounter a bug or have an issue to report, please follow these steps:  
+
+1. **Go to the Issues Page**  
+  Navigate to the [GitHub Issues page](https://github.com/TirsvadCLI/CSharp.Tool.Frame/issues).  
+
+2. **Click "New Issue"**  
+  Click the green **"New Issue"** button to create a new issue.  
+
+3. **Provide Details**  
+  - **Title**: Write a concise and descriptive title for the issue.  
+  - **Description**: Include the following details:  
+    - Steps to reproduce the issue.  
+    - Expected behavior.  
+    - Actual behavior.  
+    - Environment details (e.g., OS, .NET version, etc.).  
+  - **Attachments**: Add screenshots, logs, or any other relevant files if applicable.  
+
+4. **Submit the Issue**  
+  Once all details are filled in, click **"Submit new issue"** to report it.  
+
+Your feedback is valuable and helps improve the project!
+
+## License
+
+Distributed under the GPL-3.0 [License][license-url].
+
+## Contact
+
+Jens Tirsvad Nielsen - [LinkedIn][linkedin-url]
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [contributors-shield]: https://img.shields.io/github/contributors/TirsvadCLI/Dotnet.Game.Snake?style=for-the-badge
