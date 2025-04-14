@@ -7,38 +7,10 @@
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-<br />
-<div align="center">
-    <a href="https://github.com/TirsvadCLI/Dotnet.Game.Snake">
-        <img src="logo/logo.png" alt="Logo" width="80" height="80">
-    </a>
-    <h3 align="center">Snake Game</h3>
-    <p align="center">
-    A classic snake game for windows console and linux console
-    <br />
-    <br />
-    <!-- PROJECT SCREENSHOTS -->
-    <a href="https://github.com/TirsvadCLI/Dotnet.Game.Snake/blob/master/images/Screenshot_menu.png">
-        <img src="images/Screenshot_menu.png" alt="The game" height="120">
-    </a>
-    <a href="https://github.com/TirsvadCLI/Dotnet.Game.Snake/blob/master/images/Screenshot_snakeGame.png">
-        <img src="images/Screenshot_snakeGame.png" alt="The game" height="120">
-    </a>
-    <a href="https://github.com/TirsvadCLI/Dotnet.Game.Snake/blob/master/images/Screenshot_highscore.png">
-        <img src="images/Screenshot_highscore.png" alt="The game" height="120">
-    </a>
-    <br />
-    <a href="https://github.com/TirsvadCLI/Dotnet.Game.Snake"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/TirsvadCLI/Dotnet.Game.Snake/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
-    ·
-    <a href="https://github.com/TirsvadCLI/Dotnet.Game.Snake/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
-    </p>
-</div>
-
-# Snake Game
+# ![Logo][Logo] Snake Game
 This is a simple snake game for windows console and linux console. It's written in C# and uses .NET 9
+
+[![Screenshot_menu][Screenshot_menu]][Screenshot_menu_url][![Screenshot_snakeGame][Screenshot_snakeGame]][Screenshot_snakeGame_url][![Screenshot_highscore][Screenshot_highscore]][Screenshot_highscore_url]
 
 ## Table of Contents
 
@@ -98,7 +70,7 @@ This is an example of how to list things you need to use the software and how to
 
 ```powershell
 # Define the URL and the destination file path
-$url = "https://github.com/TirsvadCLI/Dotnet.Game.Snake/releases/download/1.1.0/Snake.zip"
+$url = "https://github.com/TirsvadCLI/Dotnet.Game.Snake/releases/download/1.1.2/Snake.zip"
 $destination = "Snake.zip"
 $unzipPath = "Snake"
 
@@ -123,7 +95,7 @@ cd Snake
 1. Open a bash window and enter the following commands to download game
 ```bash
 # Define the URL and the destination file path
-url="https://github.com/TirsvadCLI/Dotnet.Game.Snake/releases/download/1.1.0/Snake.zip"
+url="https://github.com/TirsvadCLI/Dotnet.Game.Snake/releases/download/1.1.2/Snake.zip"
 destination="Snake"
 unzipPath="Snake"
 
@@ -194,3 +166,13 @@ Dotnet.Game.Snake/          # Root folder that contains the solution
 [license-url]: https://github.com/TirsvadCLI/Dotnet.Game.Snake/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/jens-tirsvad-nielsen-13b795b9/
+[Repos-size-shield]: https://img.shields.io/github/repo-size/TirsvadCLI/Dotnet.PfxCertificateManager?style=for-the-badge
+
+[Logo]: https://raw.githubusercontent.com/TirsvadCLI/Dotnet.Game.Snake/master/image/logo/32x32/logo.png
+
+[Screenshot_menu]: https://raw.githubusercontent.com/TirsvadCLI/Dotnet.Game.Snake/master/image/small/Screenshot_menu.png
+[Screenshot_menu_url]: https://raw.githubusercontent.com/TirsvadCLI/Dotnet.Game.Snake/master/image/Screenshot_menu.png
+[Screenshot_snakeGame]: https://raw.githubusercontent.com/TirsvadCLI/Dotnet.Game.Snake/master/image/small/Screenshot_snakeGame.png
+[Screenshot_snakeGame_url]: https://raw.githubusercontent.com/TirsvadCLI/Dotnet.Game.Snake/master/image/Screenshot_snakeGame.png
+[Screenshot_highscore]: https://raw.githubusercontent.com/TirsvadCLI/Dotnet.Game.Snake/master/image/small/Screenshot_highscore.png
+[Screenshot_highscore_url]: https://raw.githubusercontent.com/TirsvadCLI/Dotnet.Game.Snake/master/image/Screenshot_highscore.png
