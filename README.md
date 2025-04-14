@@ -10,7 +10,7 @@
 # ![Logo][Logo] Snake Game
 This is a simple snake game for windows console and linux console. It's written in C# and uses .NET 9
 
-[![Screenshot_menu][Screenshot_menu]][Screenshot_menu_url][![Screenshot_snakeGame][Screenshot_snakeGame]][Screenshot_snakeGame_url][![Screenshot_highscore][Screenshot_highscore]][Screenshot_highscore_url]
+[![Screenshot_menu][Screenshot_menu]][Screenshot_menu_url] [![Screenshot_snakeGame][Screenshot_snakeGame]][Screenshot_snakeGame_url] [![Screenshot_highscore][Screenshot_highscore]][Screenshot_highscore_url]
 
 ## Table of Contents
 
